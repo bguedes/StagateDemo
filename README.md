@@ -89,6 +89,27 @@ The same using Rest :
 https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv?where={"country": {"$eq": "Spain"}}
 ```
 
+## GraphQL apis
+
+For demo keyspce :
+
+```
+https://(databaseId)-(region).apps.astra.datastax.com/api/graphql/demo
+```
+
+```graphql
+query getMovie {
+  movies_and_tv(value: { country: "Spain" }) {
+    values {
+      show_id
+      title
+      type
+      country
+    }
+  }
+}
+```
+
 ## Rest Json apis
 
 ```sql

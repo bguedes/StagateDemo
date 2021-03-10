@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "f3ff8664-1862-4c36-bb55-bf02e2f64b62",
+		"name": "02-Astra Serverless Document demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Store a Employee Document",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 7401,\n  \"ename\": \"Durand\",\n  \"job\": \"CLERK\",\n  \"mgr\": 7902,\n  \"hiredate\": \"1980/12/17\",\n  \"sal\": 3000,\n  \"comm\": 0,\n  \"dept\": {\n    \"deptno\": 20,\n    \"dname\": \"RESEARCH\",\n    \"loc\": \"PARIS\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by document Document Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee/518341b3-ee83-4e24-ab6d-f7547537acd6",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee",
+						"518341b3-ee83-4e24-ab6d-f7547537acd6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by id in where clause",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee?where={\"dept.loc\":{\"$eq\":\"PARIS\"}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"dept.loc\":{\"$eq\":\"PARIS\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by Department Location (dept.loc json Path)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee?where={\"dept.loc\":{\"$eq\":\"PARIS\"}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"dept.loc\":{\"$eq\":\"PARIS\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by Department Location (dept.loc json Path) and Salary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee?where={\"dept.loc\":{\"$eq\":\"PARIS\"}, \"sal\":{\"$gt\":2000}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"dept.loc\":{\"$eq\":\"PARIS\"}, \"sal\":{\"$gt\":2000}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by Employee Name (ename)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee?where={\"ename\":{\"$eq\":\"Durand\"}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"ename\":{\"$eq\":\"Durand\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store a Employee Document adding new properties",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"type": "text",
+						"value": "{{X-Cassandra-Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 7401,\n  \"ename\": \"Durand\",\n  \"job\": \"CLERK\",\n  \"mgr\": 7902,\n  \"hiredate\": \"1980/12/17\",\n  \"sal\": 1500,\n  \"sex\": \"F\",\n  \"comm\": 0,\n  \"dept\": {\n    \"deptno\": 20,\n    \"dname\": \"RESEARCH\",\n    \"loc\": \"PARIS\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

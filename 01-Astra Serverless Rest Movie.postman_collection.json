@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "64c48015-b2d3-49a9-bc47-acbfd0cc1e55",
+		"name": "01-Astra Serverless Rest Movie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Movie By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-cassandra-request-id",
+						"value": "{{X-Cassandra-Request-Id}}",
+						"type": "text"
+					},
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv/80216541",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"keyspaces",
+						"{{keyspaceName}}",
+						"movies_and_tv",
+						"80216541"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie By Country",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-cassandra-request-id",
+						"value": "{{X-Cassandra-Request-Id}}",
+						"type": "text"
+					},
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv?where={\"country\": {\"$eq\": \"Spain\"}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"keyspaces",
+						"{{keyspaceName}}",
+						"movies_and_tv"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"country\": {\"$eq\": \"Spain\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "databaseid",
+			"value": "7d860edd-9e9b-4a4a-933d-8861b5195b31"
+		},
+		{
+			"key": "region",
+			"value": "europe-west1"
+		},
+		{
+			"key": "unique-UUID",
+			"value": "astra"
+		},
+		{
+			"key": "database-user",
+			"value": "datastax"
+		},
+		{
+			"key": "database-password",
+			"value": "datastax"
+		},
+		{
+			"key": "my_keyspace",
+			"value": "astrademo"
+		},
+		{
+			"key": "auth-token",
+			"value": ""
+		}
+	]
+}

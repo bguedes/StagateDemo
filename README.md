@@ -32,7 +32,9 @@ token@cqlsh:demo>
 
 The same using Rest :
 
+```
 https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv/80216541
+```
 
 ### Get Movies by Country
 
@@ -83,4 +85,6 @@ token@cqlsh:demo>
 
 The same using Rest :
 
+```
 https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv?where={"country": {"$eq": "Spain"}}
+```

@@ -88,3 +88,9 @@ The same using Rest :
 ```
 https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv?where={"country": {"$eq": "Spain"}}
 ```
+
+## Rest Json apis
+
+```sql
+token@cqlsh:demo> select key from employee where leaf='id' and dbl_value=7401;
+```

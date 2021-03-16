@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "f3ff8664-1862-4c36-bb55-bf02e2f64b62",
+		"name": "03-Astra Serverless Document demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Store a Employee Document",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 7402,\n  \"ename\": \"Durand\",\n  \"job\": \"Trader\",\n  \"mgr\": 7902,\n  \"hiredate\": \"1980/12/17\",\n  \"sal\": 35000,\n  \"comm\": 0,\n  \"dept\": {\n    \"deptno\": 20,\n    \"dname\": \"RESEARCH\",\n    \"loc\": \"London\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by document Document Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee/9a97bd5d-6c24-48fd-94a7-3058dfbf7a00",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee",
+						"9a97bd5d-6c24-48fd-94a7-3058dfbf7a00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by id in where clause",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee?page-state=JGNmNGRlODgwLTczZjUtNDY4Ny04YzZiLTcxNWFlOTIyYmQzNBD/VVVVVVVVVVQCaWThVVVV8H////7wf////g==&where={\"id\":{\"$eq\":7401}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "page-state",
+							"value": "JGNmNGRlODgwLTczZjUtNDY4Ny04YzZiLTcxNWFlOTIyYmQzNBD/VVVVVVVVVVQCaWThVVVV8H////7wf////g=="
+						},
+						{
+							"key": "page-size",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "where",
+							"value": "{\"id\":{\"$eq\":7401}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by Department Location (dept.loc json Path)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee?where={\"job\":{\"$eq\":\"Trader\"}}&page-size=10",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"job\":{\"$eq\":\"Trader\"}}"
+						},
+						{
+							"key": "page-size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by Department Location (dept.loc json Path) and Salary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee?where={\"sal\":{\"$gt\":30000}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"sal\":{\"$gt\":30000}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by Employee Name (ename)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspaceName}}/collections/employee?where={\"ename\":{\"$eq\":\"Durand\"}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspaceName}}",
+						"collections",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "{\"ename\":{\"$eq\":\"Durand\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "b70de93f-855e-4c29-9e24-3778530db044",
+		"name": "02-Astra Serverless GraphQL demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Movie by Country",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-cassandra-token",
+						"value": "{{X-Cassandra-Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getMovie {\n  movies_and_tv(value: { country: \"Spain\" }) {\n    values {\n      show_id\n      title\n      type\n      country\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/graphql/{{keyspaceName}}",
+					"protocol": "https",
+					"host": [
+						"{{databaseId}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"graphql",
+						"{{keyspaceName}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -27,7 +27,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv/80216541",
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv/80195654",
 					"protocol": "https",
 					"host": [
 						"{{databaseId}}-{{region}}",
@@ -43,7 +43,7 @@
 						"keyspaces",
 						"{{keyspaceName}}",
 						"movies_and_tv",
-						"80216541"
+						"80195654"
 					]
 				}
 			},
@@ -71,7 +71,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv?where={\"country\": {\"$eq\": \"Spain\"}}",
+					"raw": "https://{{databaseId}}-{{region}}.apps.astra.datastax.com/api/rest/v2/keyspaces/{{keyspaceName}}/movies_and_tv?where={\"country\": {\"$eq\": \"Spain\"}}&page-size=10",
 					"protocol": "https",
 					"host": [
 						"{{databaseId}}-{{region}}",
@@ -92,6 +92,10 @@
 						{
 							"key": "where",
 							"value": "{\"country\": {\"$eq\": \"Spain\"}}"
+						},
+						{
+							"key": "page-size",
+							"value": "10"
 						}
 					]
 				}

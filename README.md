@@ -1,4 +1,4 @@
-# StagateDemo
+# StargateDemo
 
 ## Rest apis
 
